@@ -48,11 +48,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rKK-TW-HWf">
-                                <rect key="frame" x="58" y="209" width="258" height="250"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lUs-xV-1B7">
-                                <rect key="frame" x="62" y="209" width="250" height="250"/>
+                                <rect key="frame" x="58" y="209" width="258" height="250"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99786698190000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,31 +61,31 @@
                             <constraint firstAttribute="trailingMargin" secondItem="iGr-jA-1YW" secondAttribute="trailing" constant="88" id="4x8-bZ-66Z"/>
                             <constraint firstItem="iGr-jA-1YW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="84" id="5QZ-gA-dwL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hpA-P6-rMN" secondAttribute="trailing" constant="-28" id="5aJ-xs-vva"/>
-                            <constraint firstItem="rKK-TW-HWf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="189" id="7aS-Za-gaU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lUs-xV-1B7" secondAttribute="trailing" constant="43" id="71j-vZ-VH5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KdY-3c-xxO" secondAttribute="trailing" constant="84" id="928-YM-J8U"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iGr-jA-1YW" secondAttribute="bottom" constant="213" id="Jle-c6-G6i"/>
                             <constraint firstItem="lUs-xV-1B7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="26" id="OAf-Bs-KNY"/>
                             <constraint firstItem="hpA-P6-rMN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-28" id="ONo-Yv-mfk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KdY-3c-xxO" secondAttribute="trailing" constant="88" id="PcA-n4-kQ4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iGr-jA-1YW" secondAttribute="trailing" constant="84" id="QMl-bU-ijH"/>
-                            <constraint firstItem="rKK-TW-HWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="Rlb-o0-LJH"/>
+                            <constraint firstItem="lUs-xV-1B7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="SIP-PQ-N7e"/>
                             <constraint firstItem="lUs-xV-1B7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="46" id="XKF-pQ-0ir"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rKK-TW-HWf" secondAttribute="bottom" constant="208" id="Xvf-3e-Nn7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rKK-TW-HWf" secondAttribute="trailing" constant="43" id="YYV-dt-J6l"/>
                             <constraint firstItem="iGr-jA-1YW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88" id="ZhY-I7-Jcr"/>
+                            <constraint firstItem="lUs-xV-1B7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="189" id="a7j-0E-dcC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lUs-xV-1B7" secondAttribute="bottom" constant="257" id="hhZ-J1-0FZ"/>
                             <constraint firstItem="KdY-3c-xxO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="84" id="lpn-cM-SBj"/>
-                            <constraint firstItem="lUs-xV-1B7" firstAttribute="bottom" secondItem="rKK-TW-HWf" secondAttribute="bottom" id="nP9-gu-ELr"/>
-                            <constraint firstItem="lUs-xV-1B7" firstAttribute="top" secondItem="rKK-TW-HWf" secondAttribute="top" id="ntt-gR-1wp"/>
                             <constraint firstItem="hpA-P6-rMN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="rTS-W1-MuW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hpA-P6-rMN" secondAttribute="bottom" id="s7j-vr-Jxd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lUs-xV-1B7" secondAttribute="bottom" constant="208" id="tLU-U3-mOM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hpA-P6-rMN" secondAttribute="trailing" constant="-24" id="vl5-Vk-mAY"/>
                             <constraint firstItem="KdY-3c-xxO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="88" id="zBx-qg-Ewr"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="2St-D0-2f7"/>
                                 <exclude reference="3Lp-GG-xvp"/>
                                 <exclude reference="OAf-Bs-KNY"/>
+                                <exclude reference="XKF-pQ-0ir"/>
                                 <exclude reference="PcA-n4-kQ4"/>
                                 <exclude reference="zBx-qg-Ewr"/>
                                 <exclude reference="4x8-bZ-66Z"/>

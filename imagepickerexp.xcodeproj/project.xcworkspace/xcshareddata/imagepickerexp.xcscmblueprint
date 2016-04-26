@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "130D07C1E6892B27F77E4F3FAFD29F616D2CBB9C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "130D07C1E6892B27F77E4F3FAFD29F616D2CBB9C" : 0,
+    "0EA2D44549FFD51E36ECE94026D507B5BD367FE4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D8B87DB2-3EC7-44FD-B2D3-11893B659F34",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "130D07C1E6892B27F77E4F3FAFD29F616D2CBB9C" : "imagepickerexp\/",
+    "0EA2D44549FFD51E36ECE94026D507B5BD367FE4" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "imagepickerexp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "imagepickerexp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shravansukumar\/imagepickerexp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0EA2D44549FFD51E36ECE94026D507B5BD367FE4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shravansukumar\/MemeMev1.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "130D07C1E6892B27F77E4F3FAFD29F616D2CBB9C"
+    }
+  ]
+}

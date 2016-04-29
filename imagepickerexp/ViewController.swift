@@ -9,7 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+    
+    var meme : Meme!
 
+    
+    @IBOutlet var topToolBar: UINavigationBar!
+    @IBOutlet var shareButton: UIBarButtonItem!
+    @IBOutlet var bottomToolBar: UIToolbar!
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     
@@ -18,12 +24,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        shareButton.enabled = false
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
-        
         
         topTextField.defaultTextAttributes = memeTextAtributes
         bottomTextField.defaultTextAttributes = memeTextAtributes
@@ -34,6 +39,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldDidBeginEditing(topTextField)
         textFieldDidBeginEditing(bottomTextField)
         
+    }
+    
+    let memeTextAtributes = [
+        NSStrokeColorAttributeName : UIColor.blackColor(),
+        NSForegroundColorAttributeName :UIColor.whiteColor(),
+        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName : -3.0
+        
+    ]
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
+            textField.clearsOnBeginEditing = true
+        }
+        else {
+            textField.clearsOnBeginEditing = false
+            
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,7 +72,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.unsubscribeToKeyboardNotifications()
     }
     
+    func save(memedImage: UIImage) {
+         meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: memedImage, memedImage: memedImage)
+    }
     
+    func generatedMemedImage() -> UIImage {
+
+        bottomToolBar.hidden = true
+        topToolBar.hidden = true
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+                                     afterScreenUpdates: true)
+        let memedImage : UIImage =
+            UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        bottomToolBar.hidden = false
+        topToolBar.hidden = false
+        return memedImage
+    }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat{
         let userInfo = notification.userInfo
@@ -79,25 +119,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-   
-    
-    let memeTextAtributes = [NSStrokeColorAttributeName : UIColor.blackColor(),
-        NSForegroundColorAttributeName :UIColor.whiteColor(),
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -3.0
-        
-    ]
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
-            textField.clearsOnBeginEditing = true
-        }
-        else {
-            textField.clearsOnBeginEditing = false
-  
-        }
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         topTextField.resignFirstResponder()
         bottomTextField.resignFirstResponder()
@@ -110,8 +131,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
-            
-            
         }
     }
     
@@ -120,24 +139,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
+    func shareButtonWhenTapped(image: UIImage) {
+        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        nextController.completionWithItemsHandler = { action, success,items, error in
+            if success {
+                self.save(image)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
+        self.presentViewController(nextController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func shareWhenPerformingAction(sender: AnyObject) {
+        shareButtonWhenTapped(generatedMemedImage())
+        
+    }
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
-        
+        shareButton.enabled = true
         
         
     }
    
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+        textFieldDidBeginEditing(topTextField)
+        textFieldDidBeginEditing(bottomTextField)
+    }
+    
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(imagePicker, animated: true, completion: nil)
+        shareButton.enabled = true
     }
-    
-    
 
 }
 

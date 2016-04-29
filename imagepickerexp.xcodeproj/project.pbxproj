@@ -14,6 +14,7 @@
 		A46BF96A1CC0FCB30008114C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A46BF9681CC0FCB30008114C /* LaunchScreen.storyboard */; };
 		A46BF9751CC0FCB40008114C /* imagepickerexpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BF9741CC0FCB40008114C /* imagepickerexpTests.swift */; };
 		A46BF9801CC0FCB40008114C /* imagepickerexpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46BF97F1CC0FCB40008114C /* imagepickerexpUITests.swift */; };
+		A46FB2BC1CD3442300AD1D5B /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46FB2BB1CD3442300AD1D5B /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A46BF97B1CC0FCB40008114C /* imagepickerexpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imagepickerexpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A46BF97F1CC0FCB40008114C /* imagepickerexpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagepickerexpUITests.swift; sourceTree = "<group>"; };
 		A46BF9811CC0FCB40008114C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A46FB2BB1CD3442300AD1D5B /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meme.swift; path = ../Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				A46BF95F1CC0FCB30008114C /* AppDelegate.swift */,
 				A46BF9611CC0FCB30008114C /* ViewController.swift */,
+				A46FB2BB1CD3442300AD1D5B /* Meme.swift */,
 				A46BF9631CC0FCB30008114C /* Main.storyboard */,
 				A46BF9661CC0FCB30008114C /* Assets.xcassets */,
 				A46BF9681CC0FCB30008114C /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A46FB2BC1CD3442300AD1D5B /* Meme.swift in Sources */,
 				A46BF9621CC0FCB30008114C /* ViewController.swift in Sources */,
 				A46BF9601CC0FCB30008114C /* AppDelegate.swift in Sources */,
 			);
@@ -485,6 +489,7 @@
 				A46BF9861CC0FCB40008114C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A46BF9871CC0FCB40008114C /* Build configuration list for PBXNativeTarget "imagepickerexpTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +498,7 @@
 				A46BF9891CC0FCB40008114C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A46BF98A1CC0FCB40008114C /* Build configuration list for PBXNativeTarget "imagepickerexpUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +507,7 @@
 				A46BF98C1CC0FCB40008114C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

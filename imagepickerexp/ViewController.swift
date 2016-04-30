@@ -39,8 +39,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textFieldDidBeginEditing(topTextField)
         textFieldDidBeginEditing(bottomTextField)
         
+        
+        
     }
-    
+    //The attributes of the textfield are defined below
     let memeTextAtributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName :UIColor.whiteColor(),
@@ -48,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeWidthAttributeName : -3.0
         
     ]
-    
+    //Method to be called when the textfield begins to be edited
     func textFieldDidBeginEditing(textField: UITextField) {
         if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
             textField.clearsOnBeginEditing = true
@@ -71,11 +73,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         self.unsubscribeToKeyboardNotifications()
     }
-    
+    //Method to save an image
     func save(memedImage: UIImage) {
          meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: memedImage, memedImage: memedImage)
     }
-    
+    //To combine both the textfields and the image
     func generatedMemedImage() -> UIImage {
 
         bottomToolBar.hidden = true
@@ -118,14 +120,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.view.frame.origin.y = 0
         }
     }
-    
+    //When return key is pressed while using the textfield
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         topTextField.resignFirstResponder()
         bottomTextField.resignFirstResponder()
         return true
     }
 
-    
+    //To pick an image using the imagePicker
     func imagePickerController(picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : AnyObject]){
         dismissViewControllerAnimated(true, completion: nil)
         
@@ -139,6 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
+    //Method to call when the share button is pressed
     func shareButtonWhenTapped(image: UIImage) {
         let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         nextController.completionWithItemsHandler = { action, success,items, error in
@@ -149,24 +152,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         self.presentViewController(nextController, animated: true, completion: nil)
-        
     }
     
+    //On tapping the share button, the method 'shareButtonWhenTapped' is called
     @IBAction func shareWhenPerformingAction(sender: AnyObject) {
         shareButtonWhenTapped(generatedMemedImage())
         
     }
+    
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         shareButton.enabled = true
         
-        
     }
    
+    //To reset the complete meme editor, if the user is not happy with the meme
     @IBAction func cancelPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
         topTextField.text = "TOP"
@@ -174,6 +177,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerView.image = nil
         textFieldDidBeginEditing(topTextField)
         textFieldDidBeginEditing(bottomTextField)
+        shareButton.enabled = false
     }
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {

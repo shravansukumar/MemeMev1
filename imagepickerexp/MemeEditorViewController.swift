@@ -33,45 +33,47 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.defaultTextAttributes = memeTextAtributes
         bottomTextField.defaultTextAttributes = memeTextAtributes
         
-        topTextField.textAlignment = NSTextAlignment.Center
-        bottomTextField.textAlignment = NSTextAlignment.Center
+        //Method for aligning the text in textfields
+        func textAlign(textField: UITextField) {
+            return textField.textAlignment = NSTextAlignment.Center
+        }
         
-        textFieldDidBeginEditing(topTextField)
-        textFieldDidBeginEditing(bottomTextField)
-        
-        
+        textAlign(topTextField)
+        textAlign(bottomTextField)
         
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true     // status bar should be hidden
+    }
+    
     //The attributes of the textfield are defined below
     let memeTextAtributes = [
         NSStrokeColorAttributeName : UIColor.blackColor(),
         NSForegroundColorAttributeName :UIColor.whiteColor(),
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -3.0
-        
+        NSStrokeWidthAttributeName : -3.0,
     ]
+    
     //Method to be called when the textfield begins to be edited
     func textFieldDidBeginEditing(textField: UITextField) {
-        if topTextField.text == "TOP" && bottomTextField.text == "BOTTOM" {
-            textField.clearsOnBeginEditing = true
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
         }
-        else {
-            textField.clearsOnBeginEditing = false
-            
-        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
-        self.subscribeToKeyboardNotificatons()
+        subscribeToKeyboardNotificatons()
         
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeToKeyboardNotifications()
+        unsubscribeToKeyboardNotifications()
     }
     //Method to save an image
     func save(memedImage: UIImage) {
@@ -111,13 +113,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func keyboardWillShow(notification: NSNotification){
         if bottomTextField.isFirstResponder() {
-        self.view.frame.origin.y -= getKeyboardHeight(notification)
+        view.frame.origin.y = getKeyboardHeight(notification) * -1
         }
     }
     
     func keyboardWillHide(notification : NSNotification ) {
         if bottomTextField.isFirstResponder() {
-        self.view.frame.origin.y = 0
+        view.frame.origin.y = 0
         }
     }
     //When return key is pressed while using the textfield
@@ -151,7 +153,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         
-        self.presentViewController(nextController, animated: true, completion: nil)
+        presentViewController(nextController, animated: true, completion: nil)
     }
     
     //On tapping the share button, the method 'shareButtonWhenTapped' is called
@@ -160,32 +162,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+    
+    //To determine if the image is from camera or photo library
+    func sourceForImage(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(imagePicker, animated: true, completion: nil)
         shareButton.enabled = true
+    
+            switch (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
+            
+            case true:
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                
+                
+            case false:
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                
+            }
+        }
+    
+    @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+        sourceForImage()
         
     }
+    
    
     //To reset the complete meme editor, if the user is not happy with the meme
     @IBAction func cancelPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         imagePickerView.image = nil
-        textFieldDidBeginEditing(topTextField)
-        textFieldDidBeginEditing(bottomTextField)
         shareButton.enabled = false
     }
     
+    
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        presentViewController(imagePicker, animated: true, completion: nil)
-        shareButton.enabled = true
+        sourceForImage()
+        
     }
 
 }

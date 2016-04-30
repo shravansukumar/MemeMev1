@@ -24,7 +24,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1T5-n2-PO7"/>
                                     <barButtonItem title="Album" id="Lqx-9I-htT">
                                         <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="6po-Uq-DQd"/>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="yc7-nY-DPY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bpR-co-mvq"/>
@@ -40,6 +40,12 @@
                                 <rect key="frame" x="-32" y="64" width="439" height="559"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="KdY-3c-xxO">
+                                <rect key="frame" x="64" y="70" width="247" height="17"/>
+                                <color key="backgroundColor" red="0.052857161275425835" green="1" blue="0.20627257412800859" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iGr-jA-1YW">
                                 <rect key="frame" x="76" y="599" width="223" height="17"/>
                                 <color key="backgroundColor" red="0.052857161275425835" green="1" blue="0.20627257412800859" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -63,12 +69,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="KdY-3c-xxO">
-                                <rect key="frame" x="64" y="70" width="247" height="17"/>
-                                <color key="backgroundColor" red="0.052857161275425835" green="1" blue="0.20627257412800859" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.99786698190000001" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

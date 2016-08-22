@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate //UITableViewDelegate
+{
     
+    /*func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        <#code#>
+    }*/
     var meme : Meme!
 
     
@@ -22,16 +31,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet var topTextField: UITextField!
     @IBOutlet var bottomTextField: UITextField!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         shareButton.enabled = false
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        topTextField.delegate = self
-        bottomTextField.delegate = self
         
-        topTextField.defaultTextAttributes = memeTextAtributes
-        bottomTextField.defaultTextAttributes = memeTextAtributes
+        func prepareTextField(textField: UITextField, defaultText: String) {
+            super.viewDidLoad()
+            let memeTextAttributes = [
+                NSStrokeColorAttributeName : UIColor.blackColor(),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+                NSStrokeWidthAttributeName : -3.0
+            ]
+            textField.delegate = self
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.text = defaultText
+            textField.autocapitalizationType = .AllCharacters
+            textField.textAlignment = .Center
+        }
+        
+        prepareTextField(topTextField, defaultText: "TOP")
+        prepareTextField(bottomTextField, defaultText: "BOTTOM")
+        
+    
         
         //Method for aligning the text in textfields
         func textAlign(textField: UITextField) {
@@ -47,13 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true     // status bar should be hidden
     }
     
-    //The attributes of the textfield are defined below
-    let memeTextAtributes = [
-        NSStrokeColorAttributeName : UIColor.blackColor(),
-        NSForegroundColorAttributeName :UIColor.whiteColor(),
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : -3.0,
-    ]
+
     
     //Method to be called when the textfield begins to be edited
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -102,7 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func subscribeToKeyboardNotificatons() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
@@ -164,7 +182,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     //To determine if the image is from camera or photo library
-    func sourceForImage(){
+    /*func sourceForImage(){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
@@ -175,15 +193,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             case true:
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 
-                
+     
             case false:
                 imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 
+                
+                
             }
-        }
+        }*/
     
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-        sourceForImage()
+        //sourceForImage()
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        presentViewController(imagePicker, animated: true, completion: nil)
+        shareButton.enabled = true
+        imagePicker.sourceType = .PhotoLibrary
+        
         
     }
     
@@ -199,7 +225,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-        sourceForImage()
+        //sourceForImage()
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        presentViewController(imagePicker, animated: true, completion: nil)
+        shareButton.enabled = true
+        imagePicker.sourceType = .Camera
         
     }
 
